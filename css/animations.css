@@ -1,0 +1,165 @@
+/* ============================================
+   v4sil.sec - Custom Animations
+   Medium intensity - hacker aesthetic
+   ============================================ */
+
+/* ---------------------------
+   1. Fade-in on scroll
+--------------------------- */
+.card {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------------------------
+   2. Hover effects on post cards
+--------------------------- */
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 180, 216, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card.visible:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------------------------
+   3. Cyan glow on links & tags
+--------------------------- */
+a:hover {
+  text-shadow: 0 0 8px rgba(0, 180, 216, 0.6);
+  transition: text-shadow 0.3s ease, color 0.3s ease;
+}
+
+.tag-cloud a,
+.post-meta a,
+.index-tag-list a {
+  transition: color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tag-cloud a:hover,
+.post-meta a:hover,
+.index-tag-list a:hover {
+  color: #00b4d8 !important;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+  border-radius: 3px;
+}
+
+/* ---------------------------
+   4. Smooth navbar on scroll
+   (handled in JS, CSS transition here)
+--------------------------- */
+#navbar {
+  transition: background-color 0.4s ease, box-shadow 0.4s ease, padding 0.4s ease;
+}
+
+#navbar.scrolled {
+  background-color: rgba(22, 27, 39, 0.97) !important;
+  box-shadow: 0 2px 20px rgba(0, 180, 216, 0.15);
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+}
+
+/* ---------------------------
+   5. Glitch effect on blog title
+--------------------------- */
+.navbar-brand {
+  position: relative;
+  display: inline-block;
+}
+
+.navbar-brand:hover {
+  animation: glitch 0.4s linear;
+}
+
+@keyframes glitch {
+  0%   { clip-path: inset(0 0 95% 0); transform: translate(-2px, 0); color: #00b4d8; }
+  10%  { clip-path: inset(20% 0 60% 0); transform: translate(2px, 0); }
+  20%  { clip-path: inset(50% 0 30% 0); transform: translate(-2px, 0); color: #48cae4; }
+  30%  { clip-path: inset(70% 0 10% 0); transform: translate(2px, 0); }
+  40%  { clip-path: inset(30% 0 50% 0); transform: translate(-1px, 0); color: #00b4d8; }
+  50%  { clip-path: inset(10% 0 80% 0); transform: translate(1px, 0); }
+  60%  { clip-path: inset(80% 0 5% 0);  transform: translate(-2px, 0); }
+  70%  { clip-path: inset(40% 0 40% 0); transform: translate(2px, 0);  color: #48cae4; }
+  80%  { clip-path: inset(60% 0 20% 0); transform: translate(-1px, 0); }
+  90%  { clip-path: inset(5% 0 90% 0);  transform: translate(1px, 0);  color: #00b4d8; }
+  100% { clip-path: inset(0 0 0 0);     transform: translate(0, 0);    color: inherit; }
+}
+
+/* ---------------------------
+   6. Cursor trail canvas
+   (positioned fixed, no interference)
+--------------------------- */
+#cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+/* ---------------------------
+   Glitch name on banner
+--------------------------- */
+.banner-title {
+  position: relative;
+  color: #e6edf3;
+}
+
+.banner-title::before,
+.banner-title::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.banner-title::before {
+  color: #00b4d8;
+  animation: glitch-top 3s infinite;
+  clip-path: inset(0 0 70% 0);
+}
+
+.banner-title::after {
+  color: #48cae4;
+  animation: glitch-bottom 3s infinite;
+  clip-path: inset(70% 0 0 0);
+}
+
+@keyframes glitch-top {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  91% { transform: translate(-3px, -2px); opacity: 1; }
+  93% { transform: translate(3px, 2px); opacity: 1; }
+  95% { transform: translate(-2px, 1px); opacity: 1; }
+  97% { transform: translate(0); opacity: 0; }
+}
+
+@keyframes glitch-bottom {
+  0%, 90%, 100% { transform: translate(0); opacity: 0; }
+  92% { transform: translate(3px, 2px); opacity: 1; }
+  94% { transform: translate(-3px, -1px); opacity: 1; }
+  96% { transform: translate(2px, -2px); opacity: 1; }
+  98% { transform: translate(0); opacity: 0; }
+}
+/* Navbar background */
+#navbar {
+  background-color: rgba(22, 27, 39, 0.85) !important;
+}
+/* Navbar menu items */
+#navbar .navbar-nav .nav-link {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
